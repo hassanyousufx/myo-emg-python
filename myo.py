@@ -9,7 +9,7 @@ import pandas as pd
 import keras
 
 # Training and predicting EMG's from dataset
-dataset = pd.read_csv('nbl.csv')
+dataset = pd.read_csv('dataset.csv')
 X = dataset.iloc[:, [0,1,2,3,4,5,6,7]].values
 y = dataset.iloc[:, 8].values
 
@@ -61,4 +61,4 @@ y_pred = (y_pred > 0.5)
 
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(y_test, y_pred)
+cm = confusion_matrix(y_test.argmax(axis=1), y_pred.argmax(axis=1))
