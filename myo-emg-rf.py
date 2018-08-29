@@ -14,8 +14,22 @@ import numpy as np
 import threading
 import collections
 import math
+import csv
+
 
 # Complete code for training and predicting EMG data in Python using RandomForestClassifier via Myo Armband 2
+
+def unison_shuffled_copies(a, b):
+    assert len(a) == len(b)
+    p = np.random.permutation(len(a))
+    return a[p], b[p]
+
+def rms(array):
+    n = len(array)
+    sum = 0
+    for a in array:
+        sum =+ a*a
+    return np.sqrt((1/float(n))*sum)
 
 def iav(array):
     sum = 0
@@ -56,6 +70,13 @@ def aac(array):
     for a in range(0,n-1):
         sum =+ array[0+1] - array[0]
     return sum/float(n)
+
+
+def featurize(array):
+    n = []
+    for a in array:
+        n.append(rms(a))
+    return n
 
 status = 0
 
@@ -121,10 +142,12 @@ train_5 = []
 
 ges1 = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
 ges2 = ['Number 1', 'Number 2', 'Number 3', 'Number 4', 'Number 5']
-ges3 = ['Spread Fingers', 'Wave Out', 'Wave In', 'Fist', 'Rest']
+ges3 = [["Spread Fingers", "Wave Out", "Wave In", "Fist", "Rest"]]
 
-ges = ges1
+ges = ges3
 
+myFile = open('dataemg.csv', 'a')
+    
 for a in range(1,4):
 
     print("\nGesture -- ", ges[0]," : Ready?")
@@ -137,6 +160,9 @@ for a in range(1,4):
             X = []
             if len(train_1) > a*req_iter:
                 break
+            with myFile:
+                writer = csv.writer(myFile)
+                writer.writerows(train_1)
 
     print("\nGesture -- ", ges[1]," : Ready?")
     input("Press Enter to continue...")
@@ -148,6 +174,9 @@ for a in range(1,4):
             X = []
             if len(train_2) > a*req_iter:
                 break
+            with myFile:
+                writer = csv.writer(myFile)
+                writer.writerows(train_2)
 
     print("\nGesture -- ", ges[2]," : Ready?")
     input("Press Enter to continue...")
@@ -159,6 +188,9 @@ for a in range(1,4):
             X = []
             if len(train_3) > a*req_iter:
                 break
+            with myFile:
+                writer = csv.writer(myFile)
+                writer.writerows(train_3)
 
     print("\nGesture -- ", ges[3]," : Ready?")
     input("Press Enter to continue...")
@@ -170,6 +202,9 @@ for a in range(1,4):
             X = []
             if len(train_4) > a*req_iter:
                 break
+            with myFile:
+                writer = csv.writer(myFile)
+                writer.writerows(train_4)
 
 
     print("\nGesture -- ", ges[4]," : Ready?")
@@ -182,6 +217,9 @@ for a in range(1,4):
             X = []
             if len(train_5) > a*req_iter:
                 break
+            with myFile:
+                writer = csv.writer(myFile)
+                writer.writerows(train_5)
 
 train_x = []
 train_y = []
