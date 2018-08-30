@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Aug  7 15:21:26 2018
+Created on Wed Aug 29 13:39:13 2018
 
-@author: hassanyf
+@author: Hassan
 """
-
 from __future__ import print_function
 import sklearn.ensemble
 from sklearn import metrics
@@ -146,87 +145,12 @@ ges3 = ["Spread Fingers", "Wave Out", "Wave In", "Fist", "Rest"]
 
 ges = ges3
 
-    
-for a in range(1,4):
-
-    print("\nGesture -- ", ges[0]," : Ready?")
-    input("Press Enter to continue...")
-    X = []
-    while(1):
-        if len(X) > 20:
-            # print(X[-1])
-            train_1.append(np.asarray(X))
-            X = []
-            if len(train_1) > a*req_iter:
-                break
-            myFile = open('dataemg.csv', 'a')
-            with myFile:
-                writer = csv.writer(myFile)
-                writer.writerows(train_1)
-
-    print("\nGesture -- ", ges[1]," : Ready?")
-    input("Press Enter to continue...")
-    X = []
-    while(1):
-        if len(X) > 20:
-            # print(X[-1])
-            train_2.append(np.asarray(X))
-            X = []
-            if len(train_2) > a*req_iter:
-                break
-            myFile = open('dataemg.csv', 'a')
-            with myFile:
-                writer = csv.writer(myFile)
-                writer.writerows(train_2)
-
-    print("\nGesture -- ", ges[2]," : Ready?")
-    input("Press Enter to continue...")
-    X = []
-    while(1):
-        if len(X) > 20:
-            # print(X[-1])
-            train_3.append(np.asarray(X))
-            X = []
-            if len(train_3) > a*req_iter:
-                break
-            myFile = open('dataemg.csv', 'a')
-            with myFile:
-                writer = csv.writer(myFile)
-                writer.writerows(train_3)
-
-    print("\nGesture -- ", ges[3]," : Ready?")
-    input("Press Enter to continue...")
-    X = []
-    while(1):
-        if len(X) > 20:
-            # print(X[-1])
-            train_4.append(np.asarray(X))
-            X = []
-            if len(train_4) > a*req_iter:
-                break
-            myFile = open('dataemg.csv', 'a')
-            with myFile:
-                writer = csv.writer(myFile)
-                writer.writerows(train_4)
-
-
-    print("\nGesture -- ", ges[4]," : Ready?")
-    input("Press Enter to continue...")
-    X = []
-    while(1):
-        if len(X) > 20:
-            # print(X[-1])
-            train_5.append(np.asarray(X))
-            X = []
-            if len(train_5) > a*req_iter:
-                break
-            myFile = open('dataemg.csv', 'a')
-            with myFile:
-                writer = csv.writer(myFile)
-                writer.writerows(train_5)
-
 train_x = []
 train_y = []
+
+
+
+
 
 for a in train_1:
     train_x.append(np.asarray(a))
