@@ -2,7 +2,7 @@
 """
 Created on Tue Aug  7 15:21:26 2018
 
-@author: hassanyf
+@author: hassanyf and nabeelyousfi
 """
 from __future__ import print_function
 from myo.utils import TimeInterval
